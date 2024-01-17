@@ -1,0 +1,28 @@
+org_chart = [
+    ["Paul Ross(President)", ["Mark Devis(vice president-Finance)", "Roy Maccartney(vice preesident-HR)","Rebecca(vice president-Marketing)","Neil Young(vice president-Procurrent)","Scott Malkinson(vice president-Manufacturing)","Amold Haowell(vice president-Engineereing)"]],
+    ["Mark Devis(vice president-Finance)", ["Account", "Trasery"]],
+    ["Roy Maccartney(vice preesident-HR)", ["Operation & Recruitment", "Staff Development"]],
+    ["Rebecca(vice president-Marketing)", ["Customer service", "Domestic Sales", "Department"]],
+    ["Neil Young(vice president-Procurrent)", ["Purchasing", "Recycling & Inspection"]],
+    ["Scott Malkinson(vice president-Manufacturing)", ["Fabrication", "Assembly", "Testing", "Production Engineering"]],
+    ["Amold Haowell(vice president-Engineereing)", ["System Engineering", "Electronic Engineering","Software Engineering","Mechanical Engineering", "Testing Engineering"]],
+]
+
+def find_reports_and_supervisor(person):
+    direct_reports = None
+    supervisor = None
+    
+    for node in org_chart:
+        if node[0] == person:
+            direct_reports = node[1]
+        elif person in node[1]:
+            supervisor = node[0]
+    
+    return direct_reports, supervisor
+
+
+person_name = "Mark Devis(vice president-Finance)"
+direct_reports, supervisor = find_reports_and_supervisor(person_name)
+
+print(f"{person_name}'s direct reports: {direct_reports}")
+print(f"{person_name} reports to: {supervisor}")
